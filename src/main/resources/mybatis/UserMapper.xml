@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.bitclick.demo.mapper.UserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="top.bitclick.demo.entity.User">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="age" property="age" />
+        <result column="email" property="email" />
+    </resultMap>
+
+    <select id ="selectAllByName" resultMap = "BaseResultMap">
+        select * from user where name = #{name}
+    </select>
+    
+    <select id="selectAllByNamePagination" resultMap="BaseResultMap">
+        select * from user where name = #{name}
+    </select>
+
+    <select id="mySelectPage" resultMap="BaseResultMap">
+        select * from user where name = #{name} and age = #{myPage.age}
+    </select>
+    
+    <select id="selectAllByNameAge" resultMap="BaseResultMap">
+        select * from user
+        <trim prefix="where" suffixOverrides="and">
+            name = #{name} and
+            <if test="age != null">age = #{age}</if>
+        </trim>
+    </select>
+</mapper>
