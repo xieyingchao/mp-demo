@@ -30,7 +30,7 @@ public class UserController {
 
 	@GetMapping("/hello")
 	public String sayHello(){
-		return "hello world";
+		return "hello world!";
 	}
 
 	@GetMapping("/select/{name}")
