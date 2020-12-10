@@ -129,7 +129,7 @@ class DemoApplicationTests {
     }
 
     @Test
-    void testDynamicsql(){
+    void testDynamicalSql(){
         String name = "xiaoxie";
         List<User> users = userMapper.selectAllByNameAge(name, 18);
         users.forEach(System.out::println);
